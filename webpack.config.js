@@ -23,14 +23,33 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.svelte$/,
+				test: /\.m?js$/,
 				use: {
-					loader: 'svelte-loader',
+					loader: 'babel-loader',
 					options: {
-						emitCss: true,
-						hotReload: true
+						presets: ['@babel/preset-env']
 					}
 				}
+			},
+			{
+				test: /\.svelte$/,
+				use: [
+					{
+						loader: 'babel-loader',
+						options: {
+							presets: [
+								'@babel/preset-env'
+							],
+						}
+					},
+					{
+						loader: 'svelte-loader',
+						options: {
+							emitCss: true,
+							hotReload: true
+						}
+					}
+				]
 			},
 			{
 				test: /\.css$/,
@@ -51,5 +70,5 @@ module.exports = {
 			filename: '[name].css'
 		})
 	],
-	devtool: prod ? false: 'source-map'
+	devtool: prod ? false : 'source-map'
 };
