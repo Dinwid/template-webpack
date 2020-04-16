@@ -1,11 +1,9 @@
-import 'promise-polyfill/src/polyfill'
+import "core-js/es/array";
+import "core-js/modules/es.promise";
 import App from './App.svelte';
 
 const app = new App({
 	target: document.body,
-	props: {
-		name: 'world'
-	}
 });
 
 window.app = app;

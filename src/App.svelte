@@ -1,5 +1,5 @@
 <script>
-	export let name;
+	let name = '';
 </script>
 
 <style>
@@ -8,4 +8,5 @@
 	}
 </style>
 
-<h1>Hello {name}!</h1>
+<input bind:value={name} placeholder="Ваше имя?">
+<h1>Привет, {name || 'незнакомец'}!</h1>
